@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--xmlns identificador del espacio de nombres(URI), identifica de forma univoca sin posibilida de error a una serie de etiquetas en xml-->
+<!--localizador uniforme de recursos URL es el espacio fisico donde estarán -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+">
+    <!--Los objetos java en spring son los beans, y su clave primaria sera al id-->
+    <bean id="persona" class="beans.Persona" init-method="metodoInicial">
+        <!--Solo hay dos modos de inyectar dependencia, o por valor (String y datos primitivos de java) o por referencia (resto de casos)-->
+        <property name="nombre" value="abc"/>
+        <property name="aficion" ref="aficion"/>
+    </bean>
+    <bean id="animal" class="beans.Animal" scope="prototype"/>
+    <bean id="cosa" class="beans.Cosa" lazy-init="true" />
+    <bean id="aficion" class="beans.Aficion"  />
+           
+</beans>
