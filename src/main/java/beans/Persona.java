@@ -15,15 +15,42 @@ public class Persona {
 
     private Aficion aficion;
 
+        private Trabajo trabajo;
+
+    /**
+     * Get the value of trabajo
+     *
+     * @return the value of trabajo
+     */
+    public Trabajo getTrabajo() {
+        return trabajo;
+    }
+
+    /**
+     * Set the value of trabajo
+     *
+     * @param trabajo new value of trabajo
+     */
+    public void setTrabajo(Trabajo trabajo) {
+        this.trabajo = trabajo;
+    }
+
     @Override
     public String toString() {
-        return "Persona{" + "Nombre=" + Nombre + ", aficion=" + aficion + '}';
+        return "Persona{" + "Nombre=" + Nombre + ", aficion=" + aficion + ", trabajo=" + trabajo + '}';
     }
+
+
 
     //Este metodo se llama despues del constructor, cuando ya se ha hecho la inyeccion de dependencias
     //Spring ignora el ambito (private o public) en esta inyección
     public void metodoInicial() {
         System.out.println("En inicio");
+    }
+    
+    //Este metodo lo llama spring siempre que lo va a destruir
+    public void limpiar() {
+        System.out.println("En final");
     }
     /**
      * Get the value of aficion

@@ -4,6 +4,7 @@ import beans.Animal;
 import beans.Cosa;
 import beans.Persona;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -15,6 +16,11 @@ public class App {
     public static void main(String[] args) {
         ApplicationContext ctx;
         ctx = new ClassPathXmlApplicationContext("app.xml");
+        
+        //Esto se deja para crear un gancho que se ejecute cuando acabe el hilo principal
+        AbstractApplicationContext a  = (AbstractApplicationContext) ctx;
+        a.registerShutdownHook();
+        
         System.out.println("Contexto cargado");
 
 //        //Spring cuando declaramos un bean en un xml lo que interpreta es que es un singleton por lo que ambos objetos son el mismo

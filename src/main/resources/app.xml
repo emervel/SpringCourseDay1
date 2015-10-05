@@ -9,7 +9,8 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
 ">
     <!--Los objetos java en spring son los beans, y su clave primaria sera al id-->
-    <bean id="persona" class="beans.Persona" init-method="metodoInicial">
+    <!--Con el autowire me evito tener que poner los properties, porque spring hace IoC y me instancia todos-->
+    <bean id="persona" class="beans.Persona" init-method="metodoInicial" destroy-method="limpiar" autowire="byType">
         <!--Solo hay dos modos de inyectar dependencia, o por valor (String y datos primitivos de java) o por referencia (resto de casos)-->
         <property name="nombre" value="abc"/>
         <property name="aficion" ref="aficion"/>
@@ -17,5 +18,5 @@
     <bean id="animal" class="beans.Animal" scope="prototype"/>
     <bean id="cosa" class="beans.Cosa" lazy-init="true" />
     <bean id="aficion" class="beans.Aficion"  />
-           
+    <bean class="beans.Trabajo"  />      
 </beans>
